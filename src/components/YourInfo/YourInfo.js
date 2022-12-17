@@ -5,7 +5,7 @@ import { useInput } from "../../hooks/useInput";
 import { useFormStepContext } from "../../context/stepForm-context";
 
 const YourInfo = () => {
-  const { progressNextStep } = useFormStepContext();
+  const { progressNextStep, values } = useFormStepContext();
   const {
     value: enteredName,
     hasError: nameHasError,
@@ -13,7 +13,7 @@ const YourInfo = () => {
     valueChangeHandler: nameChange,
     isValid: nameIsValid,
     reset: nameReset,
-  } = useInput((val) => val.trim() !== "");
+  } = useInput((val) => val.trim() !== "", values.name);
 
   const {
     value: enteredEmail,
@@ -22,7 +22,7 @@ const YourInfo = () => {
     valueChangeHandler: emailChange,
     isValid: emailIsValid,
     reset: emailReset,
-  } = useInput((val) => val.trim() !== "");
+  } = useInput((val) => val.trim() !== "", values.email);
 
   const {
     value: enteredPhone,
@@ -31,7 +31,7 @@ const YourInfo = () => {
     valueChangeHandler: phoneChange,
     isValid: phoneIsValid,
     reset: phoneReset,
-  } = useInput((val) => val.trim() !== "");
+  } = useInput((val) => val.trim() !== "", values.phone);
 
   const handleSubmit = () => {
     if (!nameIsValid || !emailIsValid || !phoneIsValid) {

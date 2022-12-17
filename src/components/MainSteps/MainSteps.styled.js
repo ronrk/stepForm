@@ -14,6 +14,10 @@ const MainStepsWrapper = styled.div`
   padding-right: 4rem;
   border-radius: 8px;
 
+  @media screen and (max-width: 850px) {
+    display: none;
+  }
+
   & .steps__list {
     list-style: none;
     display: flex;

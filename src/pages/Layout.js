@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
 
-import { MainSteps } from "../components";
+import { MainSteps, MobileMainSteps } from "../components";
 import FormPage from "./FormPage";
 
 import Wrapper from "./styled/Layout.styled";
@@ -16,6 +16,7 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <MainSteps />
+      <MobileMainSteps />
       <Routes>
         <Route path="/:id" element={<FormPage />} />
       </Routes>

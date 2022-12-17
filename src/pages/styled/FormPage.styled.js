@@ -5,7 +5,7 @@ const FormPageWrapper = styled.div`
   min-height: 500px;
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: center;
 
   & .form__header {
     & .form__title {
@@ -50,7 +50,7 @@ const FormPageWrapper = styled.div`
   }
 
   & .btn-prev {
-    margin-left: auto;
+    /* margin-left: auto; */
     padding: 1.4rem 2.7rem;
     color: var(--cool-gray);
     font-size: 1.6rem;
@@ -73,12 +73,21 @@ const FormPageWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
+    min-width: 70%;
   }
 
   & .form-content {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+  @media screen and (max-width: 850px) {
+    background-color: var(--white);
+    margin: 2rem;
+    margin-top: -10%;
+    padding: 2rem;
+    width: auto;
+    border-radius: 8px;
   }
 `;
 

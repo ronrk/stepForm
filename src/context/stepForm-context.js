@@ -10,7 +10,7 @@ const initialState = {
     name: "",
     email: "",
     phone: "",
-    duration: "",
+    yearly: false,
     plan: "",
     addOns: [],
     total: 0,
@@ -25,6 +25,25 @@ const StepFormProvider = ({ children }) => {
     nextPage();
   };
 
+  const toggleYearly = (value) => {
+    dispatch({ type: "TOGGLE_YEARLY", payload: value });
+  };
+
+  const handlePlanChange = (value, price) => {
+    dispatch({ type: "PLAN_CHANGE", payload: { value, price } });
+  };
+
+  const handleAddOnsChange = ({ value, checked, price }) => {
+    if (checked) {
+      dispatch({ type: "ADD_ADD_ON", payload: { value, price } });
+    }
+    if (!checked) {
+      dispatch({ type: "REMOVE_ADD_ON", payload: { value, price } });
+    }
+  };
+
+  const handleSubmitSum = () => {};
+
   const nextPage = () => {
     dispatch({ type: "NEXT_PAGE" });
   };
@@ -32,9 +51,23 @@ const StepFormProvider = ({ children }) => {
     dispatch({ type: "PREV_PAGE" });
   };
 
+  const movePageToPlanPage = () => {
+    dispatch({ type: "PAGE_PLAN" });
+  };
+
   return (
     <stepFormContext.Provider
-      value={{ ...state, nextPage, prevPage, progressNextStep }}
+      value={{
+        ...state,
+        nextPage,
+        prevPage,
+        progressNextStep,
+        toggleYearly,
+        handlePlanChange,
+        handleAddOnsChange,
+        movePageToPlanPage,
+        handleSubmitSum,
+      }}
     >
       {children}
     </stepFormContext.Provider>
